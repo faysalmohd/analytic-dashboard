@@ -20,12 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className="m-2 bg-gray-200 flex flex-row gap-2"
-      >
-      <Sidebar/>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

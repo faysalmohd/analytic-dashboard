@@ -35,29 +35,29 @@ export default function Sidebar() {
         <Tile
           icon={Home}
           title="Home"
-          path="/home"
+          path="/main/home"
           count={1}
-          active={pathname === "/home"}
+          active={pathname === "/main/home"}
         />
         <Tile
           icon={LayoutDashboard}
           title="Dashboard"
-          path="/dashboard"
-          active={pathname === "/dashboard"}
+          path="/main/dashboard"
+          active={pathname === "/main/dashboard"}
         />
         <Tile
           icon={Megaphone}
           title="Notifications"
-          path="/notifications"
+          path="/main/notifications"
           count={2}
-          active={pathname === "/notifications"}
+          active={pathname === "/main/notifications"}
         />
       </div>
 
       {/* Bottom / footer */}
       <div className="flex flex-col items-start gap-3 mt-auto">
-        <Tile icon={Handshake} title="Help" path="/help" active={pathname === "/help"} />
-        <Tile icon={Settings} title="Settings" path="/setting" active={pathname === "/setting"} />
+        <Tile icon={Handshake} title="Help" path="/main/help" active={pathname === "/main/help"} />
+        <Tile icon={Settings} title="Settings" path="/main/setting" active={pathname === "/main/setting"} />
         <div className="flex flex-row w-full mt-3 gap-3 hover:bg-gray-50 cursor-pointer">
           <div className="rounded-lg text-white">
             <Image src={user} width={40} height={40} alt="User" className="rounded-lg" />

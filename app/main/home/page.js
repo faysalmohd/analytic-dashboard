@@ -1,7 +1,7 @@
 import { CalendarDays } from "lucide-react";
-import MainTitle from "../components/title";
-import Card from "../components/card";
-import BarChart from "../components/homeBarGraph";
+import MainTitle from "../../components/title";
+import Card from "../../components/card";
+import BarChart from "../../components/homeBarGraph";
 
 export default function Home() {
   const cardsData = [

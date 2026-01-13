@@ -1,10 +1,5 @@
-import Image from "next/image";
-import Sidebar from "./components/sidebar/sidebar";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <div className="h-full w-full">
-      
-    </div>
-  );
+  redirect('/main/dashboard');
 }

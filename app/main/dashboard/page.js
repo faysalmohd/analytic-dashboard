@@ -1,9 +1,9 @@
-import ActivityFeed from "../components/activityFeed";
-import AlertCard from "../components/alertcard";
-import KpiItem from "../components/kpiItem";
-import ProgressCard from "../components/progresscard";
-import SimpleTable from "../components/simpletable";
-import MainTitle from "../components/title";
+import ActivityFeed from "../../components/activityFeed";
+import AlertCard from "../../components/alertcard";
+import KpiItem from "../../components/kpiItem";
+import ProgressCard from "../../components/progresscard";
+import SimpleTable from "../../components/simpletable";
+import MainTitle from "../../components/title";
 
 export default function Dashboard() {
   return (

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import NotificationList from "../components/notificationList";
-import NotificationDetails from "../components/notificationDetails";
-import MainTitle from "../components/title";
+import NotificationList from "../../components/notificationList";
+import NotificationDetails from "../../components/notificationDetails";
+import MainTitle from "../../components/title";
 
 export default function Notification() {
   const [selected, setSelected] = useState(null);
