@@ -1,9 +1,9 @@
 import { CalendarDays } from "lucide-react";
 import MainTitle from "../components/title";
 import Card from "../components/card";
+import BarChart from "../components/homeBarGraph";
 
 export default function Home() {
-
   const cardsData = [
     {
       title: "Revenue",
@@ -46,7 +46,7 @@ export default function Home() {
     year: "numeric",
   });
   return (
-    <div className="bg-white w-full rounded p-4">
+    <div className="bg-white w-full h-[calc(100vh-16px)] overflow-y-auto rounded p-4">
       <div className="flex flex-row justify-between mr-5 items-center">
         <MainTitle title="Home" />
         <div className="text-gray-400 flex flex-row gap-2 text-sm">
@@ -56,10 +56,21 @@ export default function Home() {
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-4">
-        {cardsData.map( cards => {
-          return <Card key={cards.title} title={cards.title} trend={cards.trend} price={cards.price} percentage={cards.percentage} currency={cards.currency} updated={cards.updated}></Card>
+        {cardsData.map((cards) => {
+          return (
+            <Card
+              key={cards.title}
+              title={cards.title}
+              trend={cards.trend}
+              price={cards.price}
+              percentage={cards.percentage}
+              currency={cards.currency}
+              updated={cards.updated}
+            ></Card>
+          );
         })}
       </div>
+      <BarChart style="mt-20" />
     </div>
   );
 }

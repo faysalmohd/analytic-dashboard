@@ -9,7 +9,7 @@ export default function Card({
   updated = 'Unknown'
 }) {
   return (
-    <div className="bg-gray-100 min-h-30 rounded px-4 py-3">
+    <div className="bg-gray-100 min-h-30 h-min rounded px-4 py-3">
       <p className="capitalize">{title}</p>
       <div className="flex flex-row justify-between">
         <p className="text-3xl font-bold">

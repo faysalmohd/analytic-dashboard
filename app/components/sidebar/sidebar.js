@@ -36,7 +36,7 @@ export default function Sidebar() {
           icon={Home}
           title="Home"
           path="/home"
-          count={12}
+          count={1}
           active={pathname === "/home"}
         />
         <Tile
@@ -49,7 +49,7 @@ export default function Sidebar() {
           icon={Megaphone}
           title="Notifications"
           path="/notifications"
-          count={4}
+          count={2}
           active={pathname === "/notifications"}
         />
       </div>

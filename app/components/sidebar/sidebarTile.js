@@ -25,7 +25,7 @@ export default function Tile({
       <div className="w-4/6 capitalize text-sm">{title}</div>
 
       {count ? (
-        <div className="w-1/6 bg-gray-100 flex justify-center items-center rounded-sm text-xs text-gray-500">
+        <div className="w-1/6 bg-red-600 flex justify-center items-center rounded-sm text-xs text-white font-black">
           {count}
         </div>
       ) : null}
