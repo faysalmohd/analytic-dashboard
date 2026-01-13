@@ -29,7 +29,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 # ScreenShots
 
 ![Home Page](screenshots/home.png)
-![Dashboard Page](screenshots/dashboard.png.png)
+![Dashboard Page](screenshots/dashboard.png)
 ![Notification (not selected)](screenshots/notification1.png)
 ![Notification (selected)](screenshots/notification2.png)
 ![Help Page](screenshots/help.png)
