@@ -1,14 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 
 export default function LogoutButton() {
-  const router = useRouter();
-
-  async function logout() {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    router.push('/login');
-  }
-
-  return <button onClick={logout}>Logout</button>;
+  return (
+    <button className='bg-blue-600 text-white w-full p-2 rounded font-bold' onClick={() => signOut({ callbackUrl: '/login' })}>
+      Logout
+    </button>
+  );
 }

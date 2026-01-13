@@ -3,7 +3,7 @@
 import Tile from "./sidebarTile";
 import Genetic from "../svg/genetic";
 import Image from "next/image";
-import user from "../assets/user.png";
+import userAvatar from "../assets/user.png";
 import {
   Home,
   LayoutDashboard,
@@ -12,9 +12,10 @@ import {
   Settings,
 } from "lucide-react";
 import { usePathname } from 'next/navigation';
+import LogoutButton from "../logout";
 
 
-export default function Sidebar() {
+export default function Sidebar({user}) {
   const pathname = usePathname();
 
   return (
@@ -60,13 +61,14 @@ export default function Sidebar() {
         <Tile icon={Settings} title="Settings" path="/main/setting" active={pathname === "/main/setting"} />
         <div className="flex flex-row w-full mt-3 gap-3 hover:bg-gray-50 cursor-pointer">
           <div className="rounded-lg text-white">
-            <Image src={user} width={40} height={40} alt="User" className="rounded-lg" />
+            <Image src={user?.image || userAvatar} width={40} height={40} alt="User" className="rounded-lg" />
           </div>
           <div>
-            <p className="text-sm font-bold">Faysal</p>
-            <p className="text-xs text-gray-500">faysal123@xyz.com</p>
+            <p className="text-sm font-bold">{user?.name}</p>
+            <p className="text-xs text-gray-500">{user?.email}</p>
           </div>
         </div>
+        <LogoutButton/>
       </div>
     </div>
   );
