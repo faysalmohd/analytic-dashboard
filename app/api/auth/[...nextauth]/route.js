@@ -1,29 +1,30 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcryptjs';
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcryptjs";
+import db from "@/lib/db";
+import { randomUUID } from "crypto";
 
 export const authOptions = {
-  session: { strategy: 'jwt' },
+  session: {
+    strategy: "jwt",
+  },
+
   providers: [
+    
     CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
-      },
       async authorize(credentials) {
-        // TEMP user (replace with DB)
-        const user = {
-          id: '1',
-          name: 'Faysal Mohammed',
-          email: 'faysal@gmail.com',
-          password: bcrypt.hashSync('123', 10),
-          image: 'https://picsum.photos/200',
-        };
+        const user = db
+          .prepare("SELECT * FROM users WHERE email = ?")
+          .get(credentials.email);
 
-        if (credentials.email !== user.email) return null;
+        if (!user) return null;
 
-        const valid = await bcrypt.compare(credentials.password, user.password);
+        const valid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+
         if (!valid) return null;
 
         return {
@@ -34,28 +35,55 @@ export const authOptions = {
         };
       },
     }),
+
+    
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
-  pages: { signIn: '/login' },
+
   callbacks: {
+    
+    async signIn({ user, account }) {
+      if (account.provider === "google") {
+        const existingUser = db
+          .prepare("SELECT * FROM users WHERE email = ?")
+          .get(user.email);
+
+        if (!existingUser) {
+          db.prepare(`
+            INSERT INTO users (id, name, email, image)
+            VALUES (?, ?, ?, ?)
+          `).run(
+            randomUUID(),
+            user.name,
+            user.email,
+            user.image
+          );
+        }
+      }
+
+      return true;
+    },
+
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
-        token.image = user.image;
       }
       return token;
     },
+
     async session({ session, token }) {
       session.user.id = token.id;
-      session.user.email = token.email;
-      session.user.name = token.name;
-      session.user.image = token.image;
       return session;
     },
+  },
+
+  pages: {
+    signIn: "/login",
   },
 };
 
 const handler = NextAuth(authOptions);
-
 export { handler as GET, handler as POST };

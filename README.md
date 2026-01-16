@@ -28,12 +28,18 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 # ScreenShots
 
+![LogIn Page](screenshots/login.png)
+![SignUp Page](screenshots/signup.png)
 ![Home Page](screenshots/home.png)
 ![Dashboard Page](screenshots/dashboard.png)
 ![Notification (not selected)](screenshots/notification1.png)
 ![Notification (selected)](screenshots/notification2.png)
 ![Help Page](screenshots/help.png)
 ![Settings Page](screenshots/settings.png)
+
+# Screen Recording
+
+![Watch the screen recording instead!](screenrecording/dashboard-demo.mp4)
 
 
 # Thank You!!!
